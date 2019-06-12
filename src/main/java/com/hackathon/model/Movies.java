@@ -49,6 +49,10 @@ public class Movies {
     public Movies() {
     }
 
+    public Movies(String title, String description, String recommendation, Integer rating, String username, String watch_flag) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
     public String getUsername() {
         return username;
     }
@@ -57,14 +61,15 @@ public class Movies {
         this.username = username;
     }
 
-    public Movies(String title, String description, String recommendation, Integer rating,String username,String watch_flag) {
+    public Movies(String title, String description, Integer rating, String username, String watch_flag) {
         this.title = title;
         this.description = description;
-        this.recommendation = recommendation;
         this.rating = rating;
+        this.username = username;
         this.watch_flag = watch_flag;
     }
 
+  
     public Long getId() {
         return id;
     }
