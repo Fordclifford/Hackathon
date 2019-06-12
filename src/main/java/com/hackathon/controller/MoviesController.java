@@ -73,7 +73,7 @@ public class MoviesController {
 
     @GetMapping("/movies/getbywatchflag/{watch_flag}")
     public Optional<Movies> getMoviesByWatchflag(@PathVariable(value = "watch_flag") String watch_flag) throws ResourceNotFoundException {
-        Optional<Movies> moviebywatchflag = movieRepository.findByWatchFlag(watch_flag);
+        Optional<Movies> moviebywatchflag = movieRepository.findByWatchflag(watch_flag);
         if (!moviebywatchflag.isPresent()) {
             throw new ResourceNotFoundException("moviebywatchflag", "watchflag", watch_flag);
         }

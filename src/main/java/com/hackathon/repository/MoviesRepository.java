@@ -25,5 +25,5 @@ public interface MoviesRepository extends JpaRepository<Movies,Long> {
    Optional<Movies> findByUsername(String username);
    
  
-   Optional<Movies> findByWatchFlag(String watchflag);
+   Optional<Movies> findByWatchflag(String watchflag);
 }
