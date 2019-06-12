@@ -18,18 +18,12 @@ import org.springframework.stereotype.Repository;
  */
 @Repository
 public interface MoviesRepository extends JpaRepository<Movies,Long> {
-    @Query(
-              value = "SELECT m.id,m.title,m.description,m.recommendation,m.rating,m.username  from movies m WHERE m.title = :title",
-              nativeQuery = true)
-    Movies findByTitle(@Param("title") String title);
+
+    Movies findByTitle(String title);
     
-     @Query(
-              value = "SELECT m.id,m.title,m.description,m.recommendation,m.rating,m.username  from movies m WHERE m.username = :username",
-              nativeQuery = true)
-   Optional<Movies> findByUsername(@Param("username") String username);
+
+   Optional<Movies> findByUsername(String username);
    
-    @Query(
-              value = "SELECT m.id,m.title,m.description,m.recommendation,m.rating,m.username,m.watch_flag  from movies m WHERE m.watch_flag = :watch_flag",
-              nativeQuery = true)
-   Optional<Movies> findByWatchFlag(@Param("watch_flag") String watch_flag);
+ 
+   Optional<Movies> findByWatchFlag(String watchflag);
 }

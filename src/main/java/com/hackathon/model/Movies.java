@@ -45,12 +45,8 @@ public class Movies {
     private String username;
      
      @Column(name = "watch_flag")
-    private String watch_flag;
+    private String watchflag;
     public Movies() {
-    }
-
-    public Movies(String title, String description, String recommendation, Integer rating, String username, String watch_flag) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     public String getUsername() {
@@ -61,13 +57,24 @@ public class Movies {
         this.username = username;
     }
 
-    public Movies(String title, String description, Integer rating, String username, String watch_flag) {
+    public String getWatchflag() {
+        return watchflag;
+    }
+
+    public void setWatchflag(String watchflag) {
+        this.watchflag = watchflag;
+    }
+
+    public Movies(String title, String description, String recommendation, Integer rating, String username, String watchflag) {
         this.title = title;
         this.description = description;
+        this.recommendation = recommendation;
         this.rating = rating;
         this.username = username;
-        this.watch_flag = watch_flag;
+        this.watchflag = watchflag;
     }
+
+   
 
   
     public Long getId() {
@@ -110,13 +117,6 @@ public class Movies {
         this.rating = rating;
     }
 
-    public String getWatch_flag() {
-        return watch_flag;
-    }
-
-    public void setWatch_flag(String watch_flag) {
-        this.watch_flag = watch_flag;
-    }
     
     
 }
