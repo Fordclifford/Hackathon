@@ -10,8 +10,6 @@ import com.hackathon.model.Movies;
 import com.hackathon.payload.MovieRequest;
 import com.hackathon.payload.MovieResponse;
 import com.hackathon.repository.MoviesRepository;
-import com.hackathon.security.CurrentUser;
-import com.hackathon.security.UserPrincipal;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
@@ -37,23 +35,21 @@ public class MoviesController {
     private MoviesRepository movieRepository;
     
     @PostMapping("/movies/addmovie")
-    public Movies addMovie(@Valid @CurrentUser @RequestBody MovieRequest addmovie, UserPrincipal currentUser ) {
-       
-       
-//        Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-//        if (principal instanceof UserDetails) {
-//            username = ((UserDetails) principal).getUsername();
-//        } else {
-//            username = principal.toString();
-//        }
-       
+    public Movies addMovie(@Valid @RequestBody MovieRequest addmovie) {
+        String username;
+        Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        if (principal instanceof UserDetails) {
+            username = ((UserDetails) principal).getUsername();
+        } else {
+            username = principal.toString();
+        }
         String title = addmovie.getTitle();
         String description = addmovie.getDescription();
         String recommendation = addmovie.getRecommendation();
         Integer rating = addmovie.getRating();
         String watch_flag = addmovie.getWatch_flag();
 
-        Movies movie = new Movies(title, description, recommendation, rating, currentUser.getUsername(),watch_flag);
+        Movies movie = new Movies(title, description, recommendation, rating, username,watch_flag);
         movieRepository.save(movie);
 
         return movie;
